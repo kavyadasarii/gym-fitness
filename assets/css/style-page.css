@@ -119,11 +119,6 @@ a, button { text-decoration: none; }
   transition: background 0.2s, border-color 0.2s;
   flex-shrink: 0;
 }
-#theme-toggle:hover,
-#rtl-toggle:hover {
-  background: var(--border);
-  border-color: var(--text-muted);
-}
 
 .btn-signup {
   display: inline-flex;
@@ -377,3 +372,31 @@ header.scrolled {
   .page-hero-body p { font-size: 15px; }
 }
 
+
+
+/* ── Active nav link ─────────────────────────────────────── */
+.nav-links a.active,
+.nav-links .nav-parent.active {
+  color: var(--accent) !important;
+}
+
+.nav-links a.active {
+  position: relative;
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+#mobile-menu a.active {
+  color: var(--text) !important;
+  background: var(--bg-alt);
+  font-weight: 600;
+}
