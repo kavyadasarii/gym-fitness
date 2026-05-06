@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login – FitCore</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e53e3e'/%3E%3Cg fill='white'%3E%3Crect x='28' y='10' width='8' height='44' rx='4'/%3E%3Crect x='4' y='22' width='16' height='20' rx='4'/%3E%3Crect x='44' y='22' width='16' height='20' rx='4'/%3E%3Crect x='2' y='28' width='8' height='8' rx='2'/%3E%3Crect x='54' y='28' width='8' height='8' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e53e3e'/%3E%3Cg fill='white'%3E%3Crect x='28' y='10' width='8' height='44' rx='4'/%3E%3Crect x='4' y='22' width='16' height='20' rx='4'/%3E%3Crect x='44' y='22' width='16' height='20' rx='4'/%3E%3Crect x='2' y='28' width='8' height='8' rx='2'/%3E%3Crect x='54' y='28' width='8' height='8' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+  <style>
+    .brand-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-name { font-family: 'Bebas Neue', sans-serif; font-weight: 900; font-size: 1.7rem; letter-spacing: .06em; line-height: 1; color: inherit; }
+    .brand-name em { color: #e53e3e; font-style: normal; }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/login.css">
@@ -28,8 +35,15 @@
     
     <div class="login-left">
       <a href="index.html" class="brand-link">
-        <div class="brand-icon">💪</div>
-        <span class="brand-name">Fit<em>Core</em></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="40" height="40" style="flex-shrink:0;" aria-hidden="true">
+          <rect width="44" height="44" rx="10" fill="#e53e3e"/>
+          <rect x="19" y="8" width="6" height="28" rx="3" fill="white"/>
+          <rect x="5" y="14" width="12" height="16" rx="3" fill="white"/>
+          <rect x="27" y="14" width="12" height="16" rx="3" fill="white"/>
+          <rect x="3" y="18" width="5" height="8" rx="2" fill="white"/>
+          <rect x="36" y="18" width="5" height="8" rx="2" fill="white"/>
+        </svg>
+        <span class="brand-name">FIT<em>CORE</em></span>
       </a>
       <p class="left-tagline">Access your training dashboard and personalized programs.</p>
       <ul class="left-perks">
@@ -82,7 +96,6 @@
 
 <script src="../assets/js/main.js"></script>
 <script>
-  // Eye toggle for password fields
   document.querySelectorAll('.eye-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var input = document.getElementById(btn.dataset.target);

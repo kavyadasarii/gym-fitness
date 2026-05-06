@@ -4,21 +4,262 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin – FitCore Gym</title>
+
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e53e3e'/%3E%3Cg fill='white'%3E%3Crect x='28' y='10' width='8' height='44' rx='4'/%3E%3Crect x='4' y='22' width='16' height='20' rx='4'/%3E%3Crect x='44' y='22' width='16' height='20' rx='4'/%3E%3Crect x='2' y='28' width='8' height='8' rx='2'/%3E%3Crect x='54' y='28' width='8' height='8' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e53e3e'/%3E%3Cg fill='white'%3E%3Crect x='28' y='10' width='8' height='44' rx='4'/%3E%3Crect x='4' y='22' width='16' height='20' rx='4'/%3E%3Crect x='44' y='22' width='16' height='20' rx='4'/%3E%3Crect x='2' y='28' width='8' height='8' rx='2'/%3E%3Crect x='54' y='28' width='8' height='8' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    
+    .mob-topbar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      height: 56px;
+      background: var(--sidebar-bg, #111);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      flex-shrink: 0;
+    }
+    .mob-topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+    .mob-topbar-logo .logo-wordmark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: .06em;
+      color: var(--text-primary, #fff);
+      line-height: 1;
+    }
+    .mob-topbar-logo .logo-sub {
+      font-size: .6rem;
+      color: var(--text-muted, #888);
+      letter-spacing: .08em;
+      display: block;
+      line-height: 1;
+    }
+    .mob-topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .hamburger-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
+    }
+    .hamburger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary, #fff);
+      border-radius: 2px;
+      transition: all .28s ease;
+      transform-origin: center;
+    }
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 299;
+      backdrop-filter: blur(2px);
+    }
+    .sidebar-backdrop.visible { display: block; }
+
+    @media (max-width: 768px) {
+      .mob-topbar { display: flex; }
+
+      
+      .dashboard {
+        display: block !important;
+        position: relative;
+      }
+      .sidebar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        height: 100dvh;
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform .32s cubic-bezier(.4,0,.2,1);
+        z-index: 300;
+        overflow-y: auto;
+      }
+      .sidebar.open { transform: translateX(0); }
+
+      
+      .main {
+        width: 100% !important;
+        margin-left: 0 !important;
+        min-height: 100dvh;
+      }
+
+      
+      .topbar { display: none; }
+
+      
+      .content {
+        padding: 12px !important;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      
+      .stat-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+      }
+
+      
+      .dash-grid,
+      .analytics-grid,
+      .activity-row {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      
+      canvas {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: 200px !important;
+        display: block !important;
+      }
+
+      
+      #revChart2,
+      #revenueChart {
+        max-height: 190px !important;
+      }
+
+      #planChart {
+        max-height: 200px !important;
+        width: auto !important;
+        max-width: 260px !important;
+        margin: 0 auto !important;
+      }
+
+      
+      .panel {
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+      }
+
+      
+      table {
+        min-width: 520px;
+      }
+      .table-wrap,
+      .table-scroll-wrap,
+      .panel > table {
+        overflow-x: auto !important;
+        display: block !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      
+      .section-hdr,
+      .hdr-action {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+      }
+
+      
+      .trainer-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      
+      .program-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      
+      .rev-cards,
+      .rev-cards-4 {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+      }
+
+      
+      .settings-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
 </head>
 <body>
+
+
+<div class="mob-topbar">
+  <a href="index.html" class="mob-topbar-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="32" height="32" aria-hidden="true">
+      <rect width="44" height="44" rx="10" fill="#e53e3e"/>
+      <rect x="19" y="8" width="6" height="28" rx="3" fill="white"/>
+      <rect x="5" y="14" width="12" height="16" rx="3" fill="white"/>
+      <rect x="27" y="14" width="12" height="16" rx="3" fill="white"/>
+      <rect x="3" y="18" width="5" height="8" rx="2" fill="white"/>
+      <rect x="36" y="18" width="5" height="8" rx="2" fill="white"/>
+    </svg>
+    <div>
+      <span class="logo-wordmark">FitCore</span>
+      <span class="logo-sub">Admin Portal</span>
+    </div>
+  </a>
+  <div class="mob-topbar-right">
+    <div class="topbar-icon" onclick="showSection('notifications')" style="position:relative;">
+      <i class="fa-solid fa-bell" style="color:var(--text-primary,#fff);font-size:1rem;"></i>
+      <div class="notif-dot"></div>
+    </div>
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu" onclick="toggleSidebar()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
 
 <div class="dashboard">
 
   
-  <aside class="sidebar">
+  <aside class="sidebar" id="mobileSidebar">
 
     
     <a href="index.html" class="sidebar-logo">
-      <div class="logo-bolt">⚡</div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="32" height="32" style="flex-shrink:0;" aria-hidden="true">
+        <rect width="44" height="44" rx="10" fill="#e53e3e"/>
+        <rect x="19" y="8" width="6" height="28" rx="3" fill="white"/>
+        <rect x="5" y="14" width="12" height="16" rx="3" fill="white"/>
+        <rect x="27" y="14" width="12" height="16" rx="3" fill="white"/>
+        <rect x="3" y="18" width="5" height="8" rx="2" fill="white"/>
+        <rect x="36" y="18" width="5" height="8" rx="2" fill="white"/>
+      </svg>
       <div>
         <span class="logo-wordmark">FitCore</span>
         <span class="logo-sub">Admin Portal</span>
@@ -40,17 +281,17 @@
     
     <nav class="nav-section">
       <div class="nav-label">Main</div>
-      <div class="nav-link active" data-section="overview"><i class="fa-solid fa-gauge-high"></i> Overview</div>
-      <div class="nav-link" data-section="members"><i class="fa-solid fa-users"></i> Members <span class="badge-pill">318</span></div>
-      <div class="nav-link" data-section="trainers"><i class="fa-solid fa-person-running"></i> Trainers</div>
-      <div class="nav-link" data-section="programs"><i class="fa-solid fa-dumbbell"></i> Programs</div>
+      <div class="nav-link active" data-section="overview" onclick="closeSidebar()"><i class="fa-solid fa-gauge-high"></i> Overview</div>
+      <div class="nav-link" data-section="members" onclick="closeSidebar()"><i class="fa-solid fa-users"></i> Members <span class="badge-pill">318</span></div>
+      <div class="nav-link" data-section="trainers" onclick="closeSidebar()"><i class="fa-solid fa-person-running"></i> Trainers</div>
+      <div class="nav-link" data-section="programs" onclick="closeSidebar()"><i class="fa-solid fa-dumbbell"></i> Programs</div>
 
       <div class="nav-label" style="margin-top:10px;">Finance</div>
-      <div class="nav-link" data-section="revenue"><i class="fa-solid fa-chart-line"></i> Revenue</div>
+      <div class="nav-link" data-section="revenue" onclick="closeSidebar()"><i class="fa-solid fa-chart-line"></i> Revenue</div>
 
       <div class="nav-label" style="margin-top:10px;">System</div>
-      <div class="nav-link" data-section="notifications"><i class="fa-solid fa-bell"></i> Notifications <span class="badge-pill">4</span></div>
-      <div class="nav-link" data-section="settings"><i class="fa-solid fa-sliders"></i> Settings</div>
+      <div class="nav-link" data-section="notifications" onclick="closeSidebar()"><i class="fa-solid fa-bell"></i> Notifications <span class="badge-pill">4</span></div>
+      <div class="nav-link" data-section="settings" onclick="closeSidebar()"><i class="fa-solid fa-sliders"></i> Settings</div>
     </nav>
 
     
@@ -141,7 +382,9 @@
               <span class="panel-title">Revenue — 2026</span>
               <span class="panel-action" onclick="showSection('revenue')">View Full Report →</span>
             </div>
-            <canvas id="revenueChart" style="max-height:220px;"></canvas>
+            <div style="position:relative;width:100%;height:200px;">
+            <canvas id="revenueChart"></canvas>
+            </div>
           </div>
           <div class="panel">
             <div class="panel-header">
@@ -541,7 +784,7 @@
           </div>
         </div>
 
-        <div class="rev-cards" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px;">
+        <div class="rev-cards rev-cards-4" style="margin-bottom:20px;">
           <div class="rev-card">
             <div class="rev-card-label">Total Revenue</div>
             <div class="rev-card-val">₹20.7L</div>
@@ -565,13 +808,17 @@
             <div class="panel-header">
               <span class="panel-title">Monthly Revenue — 2026</span>
             </div>
-            <canvas id="revChart2" style="max-height:260px;"></canvas>
+            <div style="position:relative;width:100%;height:220px;">
+            <canvas id="revChart2"></canvas>
+            </div>
           </div>
           <div class="panel">
             <div class="panel-header">
               <span class="panel-title">Revenue by Plan</span>
             </div>
-            <canvas id="planChart" style="max-height:200px;margin:auto;display:block;"></canvas>
+            <div style="position:relative;width:100%;max-width:280px;height:220px;margin:0 auto;">
+            <canvas id="planChart"></canvas>
+            </div>
           </div>
         </div>
 
@@ -579,6 +826,7 @@
           <div class="panel-header">
             <span class="panel-title">Recent Transactions</span>
           </div>
+          <div class="table-scroll-wrap">
           <table>
             <thead>
               <tr><th>Member</th><th>Plan</th><th>Amount</th><th>Date</th><th>Status</th></tr>
@@ -591,6 +839,7 @@
               <tr><td>Vikram Singh</td><td>Gold (Annual)</td><td>₹28,000</td><td>08 Apr 2026</td><td><span class="badge expired">● Failed</span></td></tr>
             </tbody>
           </table>
+          </div>
         </div>
       </section>
 
@@ -723,5 +972,31 @@
 </div>
 
 <script src="../assets/js/dashboard.js"></script>
+<script>
+  if (typeof Chart !== 'undefined') {
+    Chart.defaults.responsive = true;
+    Chart.defaults.maintainAspectRatio = false;
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const btn = document.getElementById('hamburgerBtn');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const isOpen = sidebar.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    backdrop.classList.toggle('visible', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  function closeSidebar() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const btn = document.getElementById('hamburgerBtn');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    backdrop.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+</script>
 </body>
 </html>

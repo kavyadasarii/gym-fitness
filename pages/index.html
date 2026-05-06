@@ -3,15 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitCore – Train Smarter. Train Stronger.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e53e3e'/%3E%3Cg fill='white'%3E%3Crect x='28' y='10' width='8' height='44' rx='4'/%3E%3Crect x='4' y='22' width='16' height='20' rx='4'/%3E%3Crect x='44' y='22' width='16' height='20' rx='4'/%3E%3Crect x='2' y='28' width='8' height='8' rx='2'/%3E%3Crect x='54' y='28' width='8' height='8' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e53e3e'/%3E%3Cg fill='white'%3E%3Crect x='28' y='10' width='8' height='44' rx='4'/%3E%3Crect x='4' y='22' width='16' height='20' rx='4'/%3E%3Crect x='44' y='22' width='16' height='20' rx='4'/%3E%3Crect x='2' y='28' width='8' height='8' rx='2'/%3E%3Crect x='54' y='28' width='8' height='8' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+  <title>FitCore</title>
   <meta name="description" content="FitCore premium gym and fitness studio. Built for performance and discipline.">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/style-page.css">
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .footer-logo-text { color: #111; }
+    html.dark .footer-logo-text,
+    [data-theme="dark"] .footer-logo-text { color: #ffffff; }
+  </style>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head><script>
   (function(){
+    var t = localStorage.getItem('fitcore-theme');
+    var isDark = (t === 'dark') || (!t); 
+    if(isDark){
+      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme','dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme','light');
+    }
     var d = localStorage.getItem('fitcore-dir');
     if(d === 'rtl'){ document.documentElement.setAttribute('dir','rtl'); document.documentElement.setAttribute('lang','ar'); }
   })();
@@ -23,7 +40,22 @@
   <div class="container navbar">
     
     
-    <h1 class="logo">FitCore</h1>
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="40" height="40" style="flex-shrink:0;" aria-hidden="true">
+    <rect width="44" height="44" rx="10" fill="#e53e3e"/>
+    
+    <rect x="19" y="8" width="6" height="28" rx="3" fill="white"/>
+    
+    <rect x="5" y="14" width="12" height="16" rx="3" fill="white"/>
+    
+    <rect x="27" y="14" width="12" height="16" rx="3" fill="white"/>
+    
+    <rect x="3" y="18" width="5" height="8" rx="2" fill="white"/>
+    
+    <rect x="36" y="18" width="5" height="8" rx="2" fill="white"/>
+  </svg>
+  <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:0.06em;color:inherit;line-height:1;">FIT<span style="color:#e53e3e;">CORE</span></span>
+</a>
 
     
     <nav class="nav-links">
@@ -50,7 +82,7 @@
     
     <div class="nav-actions">
       <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-      <button id="rtl-toggle" aria-label="Switch to RTL" title="Switch to RTL">&#x2B62;</button>
+      <button id="rtl-toggle" aria-label="Switch to RTL" title="Switch to RTL">RTL</button>
       <a href="signup.html" class="btn-signup">Sign Up</a>
 
       
@@ -286,25 +318,25 @@
     <div class="steps">
       <div class="step reveal rd1">
         <div class="step-num">01</div>
-        <div class="step-icon">📋</div>
+        <div class="step-icon"><i class="fa-solid fa-clipboard-list"></i></div>
         <h3>Assessment</h3>
         <p>We analyse your body composition, fitness level, and long-term goals before building your program.</p>
       </div>
       <div class="step reveal rd2">
         <div class="step-num">02</div>
-        <div class="step-icon">🎯</div>
+        <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
         <h3>Custom Program</h3>
         <p>A periodised training and nutrition plan built specifically around your goals and schedule.</p>
       </div>
       <div class="step reveal rd3">
         <div class="step-num">03</div>
-        <div class="step-icon">💪</div>
+        <div class="step-icon"><i class="fa-solid fa-chart-line"></i></div>
         <h3>Train &amp; Track</h3>
         <p>Train with expert guidance while we monitor your progress with weekly performance benchmarks.</p>
       </div>
       <div class="step reveal rd4">
         <div class="step-num">04</div>
-        <div class="step-icon">🏆</div>
+        <div class="step-icon"><i class="fa-solid fa-bolt"></i></div>
         <h3>Transform</h3>
         <p>Real, documented results — with an evolved program ready whenever your goals change.</p>
       </div>
@@ -386,7 +418,17 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <h3>FitCore</h3>
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:12px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="40" height="40" style="flex-shrink:0;" aria-hidden="true">
+            <rect width="44" height="44" rx="10" fill="#e53e3e"/>
+            <rect x="19" y="8" width="6" height="28" rx="3" fill="white"/>
+            <rect x="5" y="14" width="12" height="16" rx="3" fill="white"/>
+            <rect x="27" y="14" width="12" height="16" rx="3" fill="white"/>
+            <rect x="3" y="18" width="5" height="8" rx="2" fill="white"/>
+            <rect x="36" y="18" width="5" height="8" rx="2" fill="white"/>
+          </svg>
+          <span class="footer-logo-text" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:0.06em;line-height:1;">FIT<span style="color:#e53e3e;">CORE</span></span>
+        </a>
         <p>Premium gym &amp; fitness studio focused on strength, transformation, and peak performance.</p>
       </div>
       <div class="footer-col">
@@ -434,5 +476,15 @@
 </footer>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/index.js"></script>
+<script>
+  (function() {
+    var page = 'index';
+    document.querySelectorAll('.nav-links a, #mobile-menu a').forEach(function(a) {
+      if (a.getAttribute('href') === page + '.html') {
+        a.classList.add('active');
+      }
+    });
+  })();
+</script>
 </body>
 </html>
