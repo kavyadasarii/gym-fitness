@@ -10,7 +10,7 @@
   text-decoration: none;
 }
 
-/* Chevron */
+
 .nav-links .nav-chevron {
   display: inline-flex;
   align-items: center;
@@ -38,7 +38,7 @@
   color: #e8392a;
 }
 
-/* ── DROPDOWN — LIGHT MODE DEFAULT ── */
+
 .dropdown {
   position: absolute;
   top: calc(100% + 14px);

@@ -525,23 +525,8 @@
   overflow: hidden;
 }
 
-.why-choose::before {
-  content: 'WHY';
-  position: absolute;
-  top: -60px; right: -30px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20rem;
-  color: var(--border);
-  opacity: .6;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
 .why-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
+  text-align: center;
   margin-bottom: 56px;
 }
 .why-header h2 {

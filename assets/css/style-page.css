@@ -25,56 +25,11 @@ body {
 }
 
 
-html[dir="ltr"] .navbar {
-  flex-direction: row;
-}
-html[dir="ltr"] .nav-links {
-  flex-direction: row;
-}
-html[dir="ltr"] .nav-actions {
-  flex-direction: row;
-}
-html[dir="ltr"] .has-dropdown {
-  flex-direction: row;
-}
-
-
-html[dir="rtl"] .navbar {
-  flex-direction: row-reverse;
-}
-html[dir="rtl"] .nav-links {
-  flex-direction: row-reverse;
-}
-html[dir="rtl"] .nav-actions {
-  flex-direction: row-reverse;
-}
-html[dir="rtl"] .has-dropdown {
-  flex-direction: row-reverse;
-}
-
-
-html[dir="rtl"] #mobile-menu a,
-html[dir="rtl"] #mobile-menu .mob-parent {
-  text-align: right;
-}
-
 
 .hero-eyebrow {
   display: flex;
   gap: 10px;
   align-items: center;
-}
-html[dir="rtl"] .hero-eyebrow {
-  flex-direction: row-reverse;
-}
-
-
-
-html[dir="rtl"] .nav-links a {
-  text-align: right;
-}
-html[dir="rtl"] .dropdown a {
-  text-align: right;
 }
 
 
@@ -414,8 +369,6 @@ header.scrolled {
 }
 
 
-html[dir="rtl"] .page-hero-body { text-align: right; }
-html[dir="rtl"] .page-hero-eyebrow { flex-direction: row-reverse; }
 
 @media(max-width: 768px) {
   .page-hero { min-height: 320px; }

@@ -314,6 +314,7 @@
   box-shadow: 0 8px 28px rgba(200,57,15,.38);
   min-width: 114px;
 }
+
 .h2-float-badge strong {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.1rem;
@@ -413,7 +414,6 @@
   color: var(--text-muted);
   line-height: 1.65;
 }
-
 
 .h2-facility {
   padding: 100px 0;

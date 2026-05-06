@@ -1,6 +1,4 @@
-/* ══════════════════════════════
-       TOKENS
-    ══════════════════════════════ */
+
     :root {
       --sidebar-w: 248px;
       --accent:    #c8390f;
@@ -37,17 +35,11 @@
       transition: background .3s, color .3s;
     }
 
-    /* ══════════════════════════════
-       LAYOUT
-    ══════════════════════════════ */
     .dashboard {
       display: flex;
       min-height: 100vh;
     }
 
-    /* ══════════════════════════════
-       SIDEBAR
-    ══════════════════════════════ */
     .sidebar {
       width: var(--sidebar-w);
       background: var(--sidebar-bg);
@@ -248,9 +240,6 @@
     .logout-btn i { width: 16px; text-align: center; color: var(--accent); font-size: .9rem; }
     .logout-btn:hover { background: rgba(200,57,15,.32); }
 
-    /* ══════════════════════════════
-       MAIN CONTENT
-    ══════════════════════════════ */
     .main {
       flex: 1;
       min-width: 0;
@@ -870,9 +859,21 @@
     .rev-card-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: .04em; color: var(--text); }
 
     
+    
+    .rev-cards-4 { grid-template-columns: repeat(4, 1fr); }
+
+    
+    .table-scroll-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-scroll-wrap table { min-width: 480px; }
+
     @media (max-width: 1100px) {
       .stat-grid { grid-template-columns: repeat(2, 1fr); }
       .trainer-grid { grid-template-columns: repeat(2, 1fr); }
+      .rev-cards-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
       :root { --sidebar-w: 200px; }
@@ -891,4 +892,96 @@
       .content { padding: 20px 16px; }
       .topbar { padding: 12px 16px; }
       .topbar-search { display: none; }
+    }
+
+    @media (max-width: 480px) {
+
+      html, body { overflow-x: hidden; }
+      .dashboard  { overflow-x: hidden; }
+      .main       { min-width: 0; overflow-x: hidden; }
+      .content    { padding: 14px 12px; overflow-x: hidden; }
+
+      
+      .topbar         { padding: 10px 12px; gap: 8px; }
+      .topbar-search  { display: none; }
+      .topbar-left h2 { font-size: 1.15rem; }
+      .topbar-left p  { display: none; }
+      .topbar-right   { gap: 8px; }
+
+      
+      .stat-grid  { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-card  { padding: 14px 12px; }
+      .stat-val   { font-size: 1.5rem; }
+      .stat-label { font-size: .65rem; }
+
+      
+      .dash-grid     { grid-template-columns: 1fr; gap: 12px; }
+      .activity-row  { grid-template-columns: 1fr; gap: 12px; }
+      .analytics-grid{ grid-template-columns: 1fr; gap: 12px; }
+      .program-grid  { grid-template-columns: 1fr; gap: 12px; }
+      .settings-grid { grid-template-columns: 1fr; }
+
+      
+      .panel { padding: 14px 12px; }
+      .panel-header { flex-wrap: wrap; gap: 6px; }
+
+      
+      .trainer-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .trainer-card { width: 100%; overflow: hidden; }
+      .trainer-body { padding: 8px 14px 16px; }
+      .trainer-stats {
+        display: flex;
+        justify-content: space-around;
+        gap: 0;
+        font-size: .76rem;
+      }
+      .trainer-stats strong { font-size: .9rem; }
+      .trainer-name { font-size: .95rem; }
+      .trainer-role { font-size: .76rem; }
+      .trainer-exp  { font-size: .7rem; }
+
+      
+      .rev-cards,
+      .rev-cards-4 { grid-template-columns: 1fr 1fr !important; gap: 8px; }
+      .rev-card     { padding: 12px 14px; }
+      .rev-card-val { font-size: 1.15rem; }
+      .rev-card-label { font-size: .68rem; }
+
+      
+      .table-scroll-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -12px;       
+        padding: 0 12px;
+        width: calc(100% + 24px);
+      }
+      .table-scroll-wrap table { min-width: 420px; }
+
+      
+      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .table-wrap table { min-width: 480px; }
+      .table-head { padding: 12px 12px 10px; flex-wrap: wrap; gap: 8px; }
+      .tbl-search { display: none; }
+
+      th, td { padding: 10px 10px; font-size: .76rem; }
+
+      
+      .section-hdr { flex-wrap: wrap; gap: 8px; }
+      .section-hdr h2 { font-size: 1.3rem; }
+      .hdr-action { flex-wrap: wrap; gap: 6px; }
+      .btn-outline,
+      .btn-primary { font-size: .74rem; padding: 6px 10px; }
+
+      
+      .settings-card { padding: 16px 14px; }
+      .setting-row { flex-wrap: wrap; gap: 8px; }
+      .settings-input { width: 100% !important; }
+
+      
+      .sidebar-logo    { padding: 16px 14px 14px; }
+      .sidebar-profile { padding: 12px 14px; }
+      .nav-link        { padding: 9px 14px; font-size: .82rem; }
     }

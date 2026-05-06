@@ -91,7 +91,6 @@ input, select, textarea, button { font-family: inherit; }
   margin-right: auto;
 }
 
-
 .btn-primary {
   display: inline-block;
   background: var(--accent);
@@ -127,8 +126,6 @@ input, select, textarea, button { font-family: inherit; }
   border-color: var(--accent);
   color: var(--accent);
 }
-
-
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -137,7 +134,6 @@ input, select, textarea, button { font-family: inherit; }
   transition: box-shadow var(--transition);
 }
 .card:hover { box-shadow: var(--shadow); }
-
 
 header {
   position: sticky;
@@ -155,7 +151,6 @@ header {
   height: var(--nav-h);
   gap: 24px;
 }
-
 
 .navbar h1 {
   font-family: 'Bebas Neue', sans-serif;
@@ -243,6 +238,16 @@ header {
   border-top: 1px solid var(--border);
   background: var(--surface);
   gap: 4px;
+
+  
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  z-index: 99;
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+  max-height: calc(100dvh - var(--nav-h));
+  overflow-y: auto;
 }
 #mobile-menu a {
   padding: 10px 0;
@@ -375,9 +380,6 @@ footer {
     color:#ff3c00;   
 }
 
-/* ══════════════════════════════════════════════════════════════
-   RTL TOGGLE BUTTON
-══════════════════════════════════════════════════════════════ */
 #rtl-toggle {
   background: var(--bg-alt);
   border: 1px solid var(--border);
@@ -437,9 +439,6 @@ html[dir="rtl"] .dropdown {
   visibility: visible;
   transform: translateY(0);
 }
-/* ═══════════════════════════════════════
-   NAVBAR + DROPDOWN (FINAL CLEAN VERSION)
-═══════════════════════════════════════ */
 
 .nav-links .nav-item {
   position: relative;
@@ -578,9 +577,7 @@ html[dir="rtl"] .has-dropdown.open > .dropdown {
     display: none;
   }
 }
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — mobile overrides (must come before RTL block)
-══════════════════════════════════════════════════════════════ */
+
 @media (max-width: 900px) {
   .nav-links  { display: none; }
   .hamburger  { display: flex; }
@@ -616,25 +613,14 @@ html[dir="rtl"] .has-dropdown.open > .dropdown {
   text-align: center;
   border: none;
 }
+.footer-logo-text { color: #111; }
+    [data-theme="dark"] .footer-logo-text { color: #ffffff; }
+    
 .mob-signup-wrap .btn-signup:hover { background: var(--accent); }
 @media (max-width: 900px) { .mob-signup-wrap { display: block; } }
 
-/* ══════════════════════════════════════════════════════════════
-   RTL — FULL LAYOUT FLIP
-   Strategy: let `direction:rtl` handle text & inline flow
-   automatically; only manually fix flex containers that have an
-   explicit flex-direction and absolute-positioned elements.
-══════════════════════════════════════════════════════════════ */
+
 html[dir="rtl"] { direction: rtl; }
-
-
-/* 
-  navbar is flex row + space-between.
-  In RTL the browser places items right→left automatically when
-  direction:rtl is set, so we do NOT need flex-direction:row-reverse
-  (that would double-flip it).  We only fix sub-items that have
-  explicit layout.
-*/
 
 
 html[dir="rtl"] .nav-links { flex-direction: row-reverse; }
@@ -650,10 +636,6 @@ html[dir="rtl"] li {
   direction: ltr;
   unicode-bidi: isolate; 
 }
-
-/* nav-actions: keep order — logo stays left, actions stay right
-   because space-between already handles it with direction:rtl */
-
 
 
 html[dir="rtl"] .has-dropdown { position: relative; }
@@ -715,8 +697,6 @@ html[dir="rtl"] .h2-journey-header,
 html[dir="rtl"] .h2-results-header { text-align: center; }
 
 
-/* Headings, logo, and number stat text stay visually LTR
-   even when page direction is RTL (they're English content) */
 html[dir="rtl"] .logo,
 html[dir="rtl"] .hero-title,
 html[dir="rtl"] .hero-title em,
