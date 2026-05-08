@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const saved       = localStorage.getItem('fitcore-theme');
   const savedDir    = localStorage.getItem('fitcore-dir');
 
-  // Theme
   if (saved === 'dark') { html.classList.add('dark'); }
   if (themeToggle) {
     themeToggle.textContent = html.classList.contains('dark') ? '☀️' : '🌙';
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // RTL — applies dir="rtl" to <html> which flips the entire page layout
+ 
   const applyDir = (rtl) => {
     if (rtl) {
       html.setAttribute('dir', 'rtl');
