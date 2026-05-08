@@ -378,14 +378,6 @@ header.scrolled {
 }
 
 
-
-/* ═══════════════════════════════════════════
-   ACTIVE NAV LINK STYLES
-   Script adds .active to matching <a> tags
-   in .nav-links and #mobile-menu
-═══════════════════════════════════════════ */
-
-/* Desktop — direct <a> links in nav */
 .nav-links a.active {
   color: var(--accent) !important;
   position: relative;
@@ -402,7 +394,6 @@ header.scrolled {
   border-radius: 2px;
 }
 
-/* Desktop — Home dropdown (nav-parent) when active */
 .nav-links .nav-parent.active {
   color: var(--accent) !important;
 }
@@ -418,7 +409,6 @@ header.scrolled {
   border-radius: 2px;
 }
 
-/* Mobile menu — active link */
 #mobile-menu a.active {
   color: var(--text) !important;
   background: var(--bg-alt);
