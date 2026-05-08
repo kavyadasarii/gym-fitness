@@ -161,6 +161,20 @@ if (btn && menu) {
     });
   }
 
+  const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  const linkPage = link.getAttribute("href");
+
+  if (linkPage === currentPage) {
+    link.classList.add("active");
+  }
+});
+
+if (currentPage === "" || currentPage === "index.html") {
+  const homeLink = document.querySelector('a[href="index.html"]');
+  if (homeLink) homeLink.classList.add("active");
+}
   
   const track   = document.getElementById('carouselTrack');
   const prevBtn = document.querySelector('.prev');
