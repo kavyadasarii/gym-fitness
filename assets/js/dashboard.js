@@ -38,7 +38,6 @@
     applyTheme(cur === 'dark' ? 'light' : 'dark');
   }
 
-  // Load saved theme
   const saved = localStorage.getItem('fitcore-theme');
   if (saved) applyTheme(saved);
   else applyTheme('dark');
@@ -57,7 +56,6 @@
     };
   }
 
-  // Overview chart
   new Chart(document.getElementById('revenueChart'), {
     type: 'bar',
     data: {
@@ -77,7 +75,6 @@
     options: chartDefaults()
   });
 
-  // Revenue section bar chart
   new Chart(document.getElementById('revChart2'), {
     type: 'line',
     data: {
@@ -95,7 +92,6 @@
     options: chartDefaults()
   });
 
-  // Plan donut
   new Chart(document.getElementById('planChart'), {
     type: 'doughnut',
     data: {
