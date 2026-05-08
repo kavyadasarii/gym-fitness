@@ -27,9 +27,6 @@
   });
 
 
-  // Mobile menu is handled by main.js to avoid duplicate listeners
-
-
   var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
   var revealObserver = new IntersectionObserver(function (entries) {
