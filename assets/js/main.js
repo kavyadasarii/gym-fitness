@@ -1,6 +1,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a, #mobile-menu a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href && href.split('/').pop() === currentFile) {
+      a.classList.add('active');
+    }
+  });
+
   
   const html        = document.documentElement;
   const themeToggle = document.getElementById('theme-toggle');
@@ -19,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
- 
   const applyDir = (rtl) => {
     if (rtl) {
       html.setAttribute('dir', 'rtl');
@@ -160,26 +167,6 @@ if (btn && menu) {
     });
   }
 
-  const currentPage = window.location.pathname.split("/").pop();
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const currentPage = window.location.pathname.split("/").pop();
-
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    const linkPage = link.getAttribute("href");
-
-    if (linkPage === currentPage) {
-      link.classList.add("active");
-    }
-  });
-
-  if (currentPage === "" || currentPage === "index.html") {
-    const homeLink = document.querySelector('a[href="index.html"]');
-    if (homeLink) homeLink.classList.add("active");
-  }
-
-});
   
   const track   = document.getElementById('carouselTrack');
   const prevBtn = document.querySelector('.prev');
