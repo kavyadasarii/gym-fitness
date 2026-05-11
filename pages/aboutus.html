@@ -461,16 +461,7 @@
   document.querySelectorAll('.has-dropdown .nav-chevron').forEach(function(c){c.addEventListener('click',function(e){e.stopPropagation();var i=c.closest('.has-dropdown'),o=i.classList.contains('open');document.querySelectorAll('.has-dropdown.open').forEach(function(el){el.classList.remove('open')});if(!o)i.classList.add('open')})});
   document.addEventListener('click',function(e){if(!e.target.closest('.has-dropdown'))document.querySelectorAll('.has-dropdown.open').forEach(function(el){el.classList.remove('open')})});
 </script>
-<script>
-  (function() {
-    var page = 'aboutus';
-    document.querySelectorAll('.nav-links a, #mobile-menu a').forEach(function(a) {
-      if (a.getAttribute('href') === page + '.html') {
-        a.classList.add('active');
-      }
-    });
-  })();
-</script>
+
 </body>
 </html>
 
